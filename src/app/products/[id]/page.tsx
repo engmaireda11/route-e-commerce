@@ -142,7 +142,7 @@ export default async function page({
       </section>
 
       <Reviews singleProduct={singleProduct}/>
-       <MoreProduct id={singleProduct?.category._id}/>
+       <MoreProduct id={singleProduct!?.category._id}/>
     </>
   );
 }
