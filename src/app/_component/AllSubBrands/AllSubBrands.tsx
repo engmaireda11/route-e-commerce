@@ -38,8 +38,8 @@ export default  async function AllSubBrands({id}:{id:string})  {
             <div className="flex items-center gap-5">
               <div className="flex items-center justify-center text-white bg-white/20 backdrop-blur-sm ring-1 ring-white/30 shadow-xl rounded-2xl size-16">
                 <Image
-                  src={brand?.image}
-                  alt={brand?.name}
+                  src={brand?.image || ""}
+                  alt={brand?.name||"Brand Image"}
                   className="object-contain w-12 h-12 "
                   width={300}
                   height={300}
