@@ -78,7 +78,7 @@ export default async function page({
               </div>
             }
           >
-            <AllSubCaregries CategoryId={CategoryId} categoryName={specficCategory?.name}/>
+            <AllSubCaregries CategoryId={CategoryId} categoryName={specficCategory!?.name}/>
           </Suspense>
         </div>
       </div>

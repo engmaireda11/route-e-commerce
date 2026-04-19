@@ -77,7 +77,7 @@ export default function TotalPrice({
       </div>
 
       <div className=" mb-6 flex items-center gap-3 flex-col sm:flex-row">
-        <AddButton word="cart" id={singleProduct?.id}/>
+        <AddButton word="cart" id={singleProduct!?.id}/>
         {/* flex-1 text-white py-3.5 px-6 rounded-xl font-medium hover:bg-[#068133] active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#16a34a]/25 bg-[#16a34a] */}
         <button className="bg-gray-900 flex-1 cursor-pointer text-white py-3.5 px-6 flex items-center gap-2 justify-center shadow-lg shadow-[#16a34a]/25 font-medium rounded-xl hover:bg-gray-800 transition ">
           <FaBolt />
@@ -85,7 +85,7 @@ export default function TotalPrice({
         </button>
       </div>
       <div className="flex items-center gap-3">
-        <FavBtn word="product" id={singleProduct?.id}/>
+        <FavBtn word="product" id={singleProduct!?.id}/>
         
         <button className=" cursor-pointer  bg-transparent rounded-xl border-2 text-gray-700 font-medium transition  px-4 py-3 hover:text-[#16a34a] hover:border-[#35ba66] border-gray-200 ">
           <FaShareNodes className="text-lg" />
