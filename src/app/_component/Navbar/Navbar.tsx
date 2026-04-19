@@ -52,10 +52,10 @@ export default function Navbar() {
               </Link>
               <form
                 className=" hidden lg:flex max-w-2xl flex-1  "
-                // onSubmit={(e) => {
-                //   e.preventDefault();
-                //   handleSearch();
-                // }}
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleSearch();
+                }}
               >
                 <div className="relative w-full">
                   <input
