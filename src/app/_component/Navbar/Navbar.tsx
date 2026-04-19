@@ -4,7 +4,12 @@ import React, { useContext, useState } from "react";
 import logo from "../../../assests/Component 1.png";
 import img from "../../../assests/Component 1.svg";
 import Image from "next/image";
-import { FaInbox, FaRegAddressBook, FaRegHeart, FaRegUserCircle } from "react-icons/fa";
+import {
+  FaInbox,
+  FaRegAddressBook,
+  FaRegHeart,
+  FaRegUserCircle,
+} from "react-icons/fa";
 import { FaCartShopping, FaGear, FaRightFromBracket } from "react-icons/fa6";
 import { LuUser } from "react-icons/lu";
 import { IoIosSearch } from "react-icons/io";
@@ -15,7 +20,7 @@ import Slider from "../Slider/Slider";
 import { signOut, useSession } from "next-auth/react";
 import { FiUser } from "react-icons/fi";
 import { CiHeart } from "react-icons/ci";
-import {Numbercontext} from "@/context/cartcontxt";
+import { Numbercontext } from "@/context/cartcontxt";
 import { useRouter } from "next/navigation";
 
 export default function Navbar() {
@@ -25,17 +30,17 @@ export default function Navbar() {
   const [query, setQuery] = useState("");
   const router = useRouter();
 
-  const {setwishilst,wishilst,setcartItems,cartItems} = useContext(Numbercontext)
-const handleSearch = () => {
-  if (!query.trim()) return;
+  const { setwishilst, wishilst, setcartItems, cartItems } =
+    useContext(Numbercontext);
+  const handleSearch = () => {
+    if (!query.trim()) return;
 
-  router.push(`/search?q=${query}`);
-};
+    router.push(`/search?q=${query}`);
+  };
 
-   function userSignOut (){
-  
-      signOut({redirect:true,callbackUrl:"/login"})
-    }
+  function userSignOut() {
+    signOut({ redirect: true, callbackUrl: "/login" });
+  }
   return (
     <>
       <header className="sticky top-0 z-40 shadow-sm  ">
@@ -45,23 +50,25 @@ const handleSearch = () => {
               <Link href="/" className="shrink-0">
                 <Image src={logo} alt="logo" />
               </Link>
-              <form className=" hidden lg:flex max-w-2xl flex-1  "
-                onSubmit={(e) => {
-    e.preventDefault();
-    handleSearch();
-  }}>
+              <form
+                className=" hidden lg:flex max-w-2xl flex-1  "
+                // onSubmit={(e) => {
+                //   e.preventDefault();
+                //   handleSearch();
+                // }}
+              >
                 <div className="relative w-full">
                   <input
                     type="text"
-                       value={query}
-    onChange={(e) => setQuery(e.target.value)}
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
                     className="border border-#E5E7EB rounded-full py-3 px-5 pr-12 pe-5 w-full focus:bg-white focus:border-[#16A34A] focus:outline-none focus:ring-2 focus:ring-[#16A34A]/50 transition bg-gray-50/50 text-sm "
                     placeholder="Search for products, brands and more..."
                   />
-                  <button className="absolute cursor-pointer text-white bg-[#16A34A] h-9 w-9 flex items-center justify-center right-1.5 top-1/2 -translate-y-1/2  rounded-full
-                   "
-                  
-                   type="submit">
+                  <button
+                    className="absolute cursor-pointer text-white bg-[#16A34A] h-9 w-9 flex items-center justify-center right-1.5 top-1/2 -translate-y-1/2  rounded-full"
+                    type="submit"
+                  >
                     <IoIosSearch className="font-bold  text-xl" />
                   </button>
                 </div>
@@ -151,14 +158,22 @@ const handleSearch = () => {
                   className="rounded-full p-2.5 relative  hover:bg-gray-100 group"
                 >
                   <FaRegHeart className="text-gray-500 text-xl transition group-hover:text-[#16A34A] " />
-                 {wishilst !== 0 && <span className="absolute top-0.5 right-0.5 size-[18px] rounded-full bg-red-600 text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">{wishilst}</span>}
+                  {wishilst !== 0 && (
+                    <span className="absolute top-0.5 right-0.5 size-[18px] rounded-full bg-red-600 text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">
+                      {wishilst}
+                    </span>
+                  )}
                 </Link>
                 <Link
                   href="/cart"
                   className="rounded-full p-2.5 relative hover:bg-gray-100 group"
                 >
                   <FaCartShopping className="text-gray-500 text-xl transition group-hover:text-[#16A34A]  " />
-                  {cartItems !== 0 &&<span className="absolute top-0.5 right-0.5 size-[18px] rounded-full bg-green-600 text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">{cartItems}</span>}
+                  {cartItems !== 0 && (
+                    <span className="absolute top-0.5 right-0.5 size-[18px] rounded-full bg-green-600 text-white text-[10px] font-bold flex items-center justify-center ring-2 ring-white">
+                      {cartItems}
+                    </span>
+                  )}
                 </Link>
 
                 {mysession.status == "authenticated" ? (
@@ -166,19 +181,21 @@ const handleSearch = () => {
                     <button
                       className="relative p-2.5 cursor-pointer rounded-full hover:bg-gray-100 transition-colors group"
                       title="Account"
-                      onClick={()=>setprofile((prev)=>!prev)}
+                      onClick={() => setprofile((prev) => !prev)}
                     >
-                     <FaRegUserCircle className=" text-xl text-gray-500 group-hover:text-[#16A34A] transition-colors" />
+                      <FaRegUserCircle className=" text-xl text-gray-500 group-hover:text-[#16A34A] transition-colors" />
                     </button>
-                    <div className={`absolute right-0 top-full mt-2 w-64 bg-white border border-gray-100 rounded-2xl shadow-xl transition-all duration-200 origin-top-right  scale-95  font-medium ${profile?"opacity-100 scale-100 visible" :"opacity-0 scale-95 invisible"}`}>
+                    <div
+                      className={`absolute right-0 top-full mt-2 w-64 bg-white border border-gray-100 rounded-2xl shadow-xl transition-all duration-200 origin-top-right  scale-95  font-medium ${profile ? "opacity-100 scale-100 visible" : "opacity-0 scale-95 invisible"}`}
+                    >
                       <div className="p-4 border-b border-gray-100">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-full bg-[#dcfce7] flex items-center justify-center">
-                           <FaRegUserCircle className=" text-xl text-[#16a34a] " />
+                            <FaRegUserCircle className=" text-xl text-[#16a34a] " />
                           </div>
                           <div className="min-w-0">
                             <p className="text-sm font-semibold text-gray-800 truncate">
-                             {mysession?.data?.user?.name}
+                              {mysession?.data?.user?.name}
                             </p>
                             <p className="text-xs text-gray-400 truncate" />
                           </div>
@@ -189,22 +206,21 @@ const handleSearch = () => {
                           className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:text-[#16a34a] hover:bg-[#f0fdf4] transition-colors"
                           href="/profile/address"
                         >
-                        <FiUser  className=" w-4 text-gray-400" />
+                          <FiUser className=" w-4 text-gray-400" />
                           My Profile
                         </Link>
                         <Link
                           className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:text-[#16a34a] hover:bg-[#f0fdf4] transition-colors"
                           href="/order"
                         >
-                        <FaInbox  className=" w-4 text-gray-400" />
+                          <FaInbox className=" w-4 text-gray-400" />
                           My Orders
                         </Link>
                         <Link
                           className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:text-[#16a34a] hover:bg-[#f0fdf4] transition-colors"
                           href="/wishlist"
                         >
-                          <CiHeart  className=" w-4 text-gray-400" />
-                        
+                          <CiHeart className=" w-4 text-gray-400" />
                           My Wishlist
                         </Link>
                         <Link
@@ -223,8 +239,10 @@ const handleSearch = () => {
                         </Link>
                       </div>
                       <div className="border-t border-gray-100 py-2">
-                        <button className="flex items-center cursor-pointer gap-3 px-4 py-2.5 text-sm text-red-500 hover:bg-red-50 transition-colors w-full text-left"
-                         onClick={userSignOut}>
+                        <button
+                          className="flex items-center cursor-pointer gap-3 px-4 py-2.5 text-sm text-red-500 hover:bg-red-50 transition-colors w-full text-left"
+                          onClick={userSignOut}
+                        >
                           <FaRightFromBracket className=" w-4 text-red-500" />
                           Sign Out
                         </button>
@@ -232,16 +250,14 @@ const handleSearch = () => {
                     </div>
                   </div>
                 ) : (
-                     <Link
-                  href="/login"
-                  className="hidden lg:flex  gap-2 ml-2 items-center cursor-pointer shadow-sm bg-[#16A34A] text-white rounded-full py-2.5 px-5 font-semibold text-[14px] transition hover:bg-[#15803d]"
-                >
-                  <LuUser />
-                  Sign In
-                </Link>
+                  <Link
+                    href="/login"
+                    className="hidden lg:flex  gap-2 ml-2 items-center cursor-pointer shadow-sm bg-[#16A34A] text-white rounded-full py-2.5 px-5 font-semibold text-[14px] transition hover:bg-[#15803d]"
+                  >
+                    <LuUser />
+                    Sign In
+                  </Link>
                 )}
-
-             
 
                 <button
                   onClick={() => setopen(true)}
