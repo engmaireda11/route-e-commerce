@@ -57,7 +57,7 @@ export default function FirstNav() {
                 <div className="flex items-center gap-4">
                   <Link
                     className="flex items-center gap-1.5 text-gray-600 hover:text-[#16A34A] transition-colors"
-                    href="/profile/addresses"
+                    href="/profile/address"
                   >
                   <LuUserRound />
                     <span>{mysession?.data?.user?.name}</span>

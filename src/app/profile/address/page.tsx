@@ -35,6 +35,7 @@ export interface AddressInfo {
 
 export default function page() {
   const [add, setadd] = useState<string|Boolean>(false);
+  const [edit, setedit] = useState(false);
   const [loading, setloading] = useState(false);
   const [address, setaddress] = useState<AddressInfo[] | null>(null);
   const form = useForm({
@@ -62,6 +63,7 @@ export default function page() {
     const result = await updateaddress(id,data );
     setloading(false);
     setadd(false);
+    setedit(false)
     if (result.status === "success") {
       getAddresses()
      
@@ -222,6 +224,7 @@ export default function page() {
                               setValue("phone", addres.phone);
                               setValue("city", addres.city);
                               setadd(addres._id);
+                              setedit(true)
                             }}
                           >
                             <FaPen className="text-sm" />
@@ -343,7 +346,7 @@ export default function page() {
                           >
                             Cancel
                           </button>
-                          {add ?  <button
+                          {edit ?  <button
                             type="button"
                             className="flex-1 cursor-pointer py-3 px-6 rounded-xl bg-[#16a34a] text-white font-semibold hover:bg-[#15803d] transition-colors disabled:opacity-50 shadow-lg shadow-[#16a34a]/25"
                             disabled={loading}
